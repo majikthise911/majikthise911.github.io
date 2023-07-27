@@ -1,0 +1,62 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Future Date Calculator</title>
+  
+  <style>
+    /* stylesheet in style tags */
+    body {
+      font-family: Arial;
+      text-align: center; 
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Future Date Calculator</h1>
+
+    <p>Today's date: <span id="today"></span></p>
+
+    <p>
+      <label for="weeks">Enter number of weeks:</label>
+      <input type="number" id="weeks" value="84">
+    </p>
+
+    <button onclick="calculateDate()">Calculate Date</button>
+
+    <p>Future date: <span id="future-date"></span></p>
+
+  </div>
+  
+  <script>
+
+    // JavaScript code
+    function calculateDate() {
+
+      const today = new Date();
+      let weeks = document.getElementById("weeks").value;
+      let days = weeks * 7;
+
+      let futureDate = new Date();
+      futureDate.setDate(today.getDate() + days);
+
+      document.getElementById("today").textContent = today.toDateString();
+      document.getElementById("future-date").textContent = futureDate.toDateString();
+
+    }
+
+  </script>
+
+</body>
+</html>
