@@ -1,21 +1,10 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Future Date Calculator</title>
-  
-  <style>
-    /* stylesheet in style tags */
-    body {
-      font-family: Arial;
-      text-align: center; 
-    }
+  <title>Date Calculator</title>
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-    }
+  <style>
+   /* stylesheet */
   </style>
 
 </head>
@@ -26,26 +15,41 @@
 
     <h1>Future Date Calculator</h1>
 
-    <p>Today's date: <span id="today"></span></p>
+    <p>Today's date: <span id="today"></span></p> 
 
     <p>
       <label for="weeks">Enter number of weeks:</label>
-      <input type="number" id="weeks" value="84">
+      <input type="number" id="weeks" value="10"> 
     </p>
 
-    <button onclick="calculateDate()">Calculate Date</button>
+    <button onclick="calculateFutureDate()">Calculate Date</button>
 
     <p>Future date: <span id="future-date"></span></p>
 
   </div>
+
+  <!-- New section -->
+
+  <h2>Weeks Between Dates</h2>
+
+  <label for="date1">Enter first date:</label>
+  <input type="date" id="date1">
+
+  <label for="date2">Enter second date:</label>
+  <input type="date" id="date2"> 
   
+  <button onclick="calculateWeeksBetween()">Calculate Weeks</button>
+
+  <p>Weeks between dates: <span id="weeks-between"></span></p>
+
   <script>
 
-    // JavaScript code
-    function calculateDate() {
+    // Original function
+    function calculateFutureDate() {
 
       const today = new Date();
-      let weeks = document.getElementById("weeks").value;
+
+      let weeks = document.getElementById("weeks").value;  
       let days = weeks * 7;
 
       let futureDate = new Date();
@@ -53,6 +57,19 @@
 
       document.getElementById("today").textContent = today.toDateString();
       document.getElementById("future-date").textContent = futureDate.toDateString();
+
+    }
+
+    // New function
+    function calculateWeeksBetween() {
+
+      const date1 = new Date(document.getElementById("date1").value);
+      const date2 = new Date(document.getElementById("date2").value);
+
+      const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      const diffWeeks = Math.ceil(timeDiff / (1000 * 60 * 60 * 24 * 7));
+
+      document.getElementById("weeks-between").textContent = diffWeeks;
 
     }
 
